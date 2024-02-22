@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="canvas" width="900" height="600"></canvas>
+    <script src= "keycodes.js"></script> 
+
+    <script>
+      var canvas, context, imagen,imagen0, imagen2, imagen3, imagen4, x, y;
+
+      window.onload = function () {
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+
+        context.font = '35pt Calibri';
+        context.fillStyle = 'black';
+        context.fillText('JUJUTSU KAISEN CHARACTERS', 150, 110);
+
+        imagen0= new Image();
+        imagen0.src = "wal.jpg"; 
+        imagen0.onload = function(){
+            context.drawImage(imagen0, 210, 200, 500, 300);
+        };
+
+        imagen= new Image();
+        imagen.src = "ita.jpg"; 
+
+        imagen2= new Image();
+        imagen2.src = "meg.jpg"; 
+        
+        imagen3= new Image();
+        imagen3.src = "goj.jpg";
+
+        imagen4= new Image();
+        imagen4.src = "nob.jpg"; 
+        
+        context.fillStyle="blue";
+        x = 50;
+        y = 50;
+        context.fillRect(x,y,100,100);
+      };
+
+      function onKeyboardEvent(event) {
+        switch (event.keyCode) {
+          case 38: // Arriba
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y -= 5;
+            context.fillRect(x, y, 100, 100);
+            context.font = '25pt arial';
+            context.fillStyle = 'red';
+            context.fillText('Itadori', 350, 200);
+            context.drawImage(imagen, 350, 250, 200, 200);
+            break;
+
+          case 40: // Abajo
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y += 5;
+            context.fillRect(x, y, 100, 100);
+            context.font = '25pt arial';
+            context.fillStyle = 'black';
+            context.fillText('Megumin', 350, 200);
+            context.drawImage(imagen2, 350, 250, 200, 200);
+            break;
+
+          case 37: // Izquierda
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            x -= 5;
+            context.fillRect(x, y, 100, 100);
+            context.font = '25pt arial';
+            context.fillStyle = 'blue';
+            context.fillText('Satoru Gojo', 350, 200);
+            context.drawImage(imagen3, 350, 250, 200, 200);
+            break;
+
+          case 39: // Derecha
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            x += 5;
+            context.fillRect(x, y, 100, 100);
+            context.font = '25pt arial';
+            context.fillStyle = 'brown';
+            context.fillText('Nobara', 350, 200);
+            context.drawImage(imagen4, 350, 200, 200, 200);
+            break;
+
+          default:
+            console.log(event.keyCode);
+        }
+      }
+
+      window.addEventListener('keydown', onKeyboardEvent, false);
+    </script>
+  </body>
+</html>
